@@ -13,7 +13,7 @@ const PRELOAD_IMAGES = [
   LOADER_BG,
   "/images/start.png",
   "/ornaments/first-page.png",
-  "/ornaments/ijou (1).png",
+  "/ornaments/ijou corrige.png",
 ];
 
 type Phase = "loading" | "fading" | "done";
