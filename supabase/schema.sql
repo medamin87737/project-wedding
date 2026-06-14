@@ -30,3 +30,7 @@ CREATE POLICY "Tout le monde peut insérer" ON rsvp
 DROP POLICY IF EXISTS "Admin peut lire" ON rsvp;
 CREATE POLICY "Admin peut lire" ON rsvp
   FOR SELECT USING (true);
+
+-- Accès lecture pour la vue stats (dashboard + formulaire RSVP)
+GRANT SELECT ON rsvp_stats TO anon, authenticated;
+GRANT SELECT, INSERT ON rsvp TO anon, authenticated;

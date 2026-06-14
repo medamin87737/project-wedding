@@ -12,8 +12,6 @@ import StartGate from "@/components/StartGate";
 import HeroSection from "@/components/HeroSection";
 import ArabicArchSection from "@/components/ArabicArchSection";
 import CountdownTimer from "@/components/CountdownTimer";
-import WeddingDetails from "@/components/WeddingDetails";
-import DressCodeSection from "@/components/DressCodeSection";
 import RSVPForm from "@/components/RSVPForm";
 import CouplePhotoSection from "@/components/CouplePhotoSection";
 import ScrollSection from "@/components/ScrollSection";
@@ -36,8 +34,6 @@ export default function Home() {
             <HeroSection />
             <ArabicArchSection />
             <CountdownTimer />
-            <WeddingDetails />
-            <DressCodeSection />
             <RSVPForm />
             <MapSection />
             <CouplePhotoSection />

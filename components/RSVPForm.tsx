@@ -102,7 +102,14 @@ export default function RSVPForm() {
       setTimeout(() => setShowConfetti(false), 4000);
     } catch (err) {
       const message =
-        err instanceof Error ? err.message : "Une erreur est survenue";
+        err instanceof Error
+          ? err.message
+          : typeof err === "object" &&
+              err !== null &&
+              "message" in err &&
+              typeof (err as { message: unknown }).message === "string"
+            ? (err as { message: string }).message
+            : "Une erreur est survenue";
       if (
         message.includes("Failed to fetch") ||
         message.includes("NetworkError") ||
