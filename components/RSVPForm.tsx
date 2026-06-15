@@ -3,7 +3,6 @@
 import { useState, FormEvent } from "react";
 import {
   supabase,
-  MAX_PLACES,
   WEDDING_CAPACITY,
   isSupabaseConfigured,
 } from "@/lib/supabase";
@@ -35,7 +34,6 @@ function Confetti() {
 
 export default function RSVPForm() {
   const [nom, setNom] = useState("");
-  const [nombrePlaces, setNombrePlaces] = useState(1);
   const [present, setPresent] = useState<boolean | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -76,7 +74,7 @@ export default function RSVPForm() {
           .single();
 
         const currentPlaces = stats?.places_confirmees ?? 0;
-        if (currentPlaces + nombrePlaces > WEDDING_CAPACITY) {
+        if (currentPlaces + 1 > WEDDING_CAPACITY) {
           throw new Error("Désolé, la capacité maximale est atteinte.");
         }
       }
@@ -89,7 +87,7 @@ export default function RSVPForm() {
         prenom,
         nom: familyName,
         telephone: null,
-        nombre_places: present ? nombrePlaces : 1,
+        nombre_places: 1,
         confirme: present,
         message: null,
       });
@@ -168,25 +166,6 @@ export default function RSVPForm() {
             placeholder="Votre nom complet"
             required
             maxLength={200}
-          />
-        </div>
-
-        <div>
-          <label
-            htmlFor="nombre_places"
-            className="mb-2 block font-display text-sm text-gold-dark"
-          >
-            Nombre de personnes
-          </label>
-          <input
-            id="nombre_places"
-            type="number"
-            min={1}
-            max={MAX_PLACES}
-            value={nombrePlaces}
-            onChange={(e) => setNombrePlaces(Number(e.target.value))}
-            className="form-input-light"
-            disabled={present === false}
           />
         </div>
 
